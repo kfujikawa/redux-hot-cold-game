@@ -1,5 +1,7 @@
 import {createStore} from 'redux';
 
-import * as reducers from './reducers/index';
+import { guessReducer } from './reducers/index';
 
-export default createStore(reducers.guessReducer);
+const store = createStore(guessReducer);
+
+export default store;

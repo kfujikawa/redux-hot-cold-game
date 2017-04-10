@@ -1,50 +1,37 @@
 import * as actions from '../actions/index';
 
-// Initial state
-const winningNumber = [getRandomInt(1, 100)];
+export const guessReducer = (state = {
+	numbers: []
+}, action) => {
 
-export const guessReducer = (state=winningNumber, action) => {
+	switch (action.type) {
 
-	if(action.type === actions.GUESS_NUMBER) {
-		console.log("guessReducer running");
-		const guess = Object.assign({}, ...state, {guess: action.guess});
-		console.log(guess);
+		case actions.GENERATE_NUMBER:
+			return Object.assign({}, state, {
+				numbers: [action.number]
+			});
 
-		return [...state, action.guess];
+		case actions.GUESS_NUMBER:
+
+			for (var i = 0; i < state.numbers.length; i++) {
+				if (action.guess === state.numbers[i]) {
+					console.log('You already guessed that');
+					return;
+				}
+			}
+
+			return Object.assign({}, state, {
+				numbers: [...state.numbers, action.guess]
+			});
+
+		case actions.COMPARE_GUESS:
+			if (state.numbers[0] === state.numbers[state.numbers.length - 1]) {
+				console.log('You guessed right!');
+				return state.numbers[0];
+			}
+
+		default:
+			return state;
+
 	}
-
-	else return state;
-
 };
-
-export const checkReducer = (state=store.getState, action) => {
-	if(action.type === actions.CHECK_GUESS) {
-
-		console.log("hi");
-
-		// let lastGuess = (store.getState.length - 1);
-		// console.log(lastGuess);
-
-		// if(state === winningNumber){
-		// 	console.log("You win!");
-		// }
-
-		// else if (state < winningNumber){
-		// 	console.log("Too low!");
-		// }
-
-		// else if (state > winningNumber){
-		// 	console.log("Too high!");
-		// }
-
-		// else return state;
-	}
-
-	else return state;
-};
-
-function getRandomInt(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min)) + min;
-}
