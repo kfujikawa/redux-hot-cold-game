@@ -1,6 +1,13 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import Game from './components/game';
+
 import * as actions from './actions/index';
 import * as reducers from './reducers/index';
 import store from './store';
+
+document.addEventListener('DOMContentLoaded', () => ReactDOM.render(<Game />, document.getElementById('app')));
 
 store.subscribe(() => {
   console.log("store changed");
