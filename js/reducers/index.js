@@ -6,7 +6,7 @@ export const guessReducer = (state = { numbers: [] }, action) => {
 
 		case actions.GENERATE_NUMBER:
 			return Object.assign({}, state, {
-				numbers: [action.number]
+				numbers:  [Math.round(Math.random() * 100)],
 			});
 
 		case actions.GUESS_NUMBER:
@@ -61,3 +61,5 @@ export const guessReducer = (state = { numbers: [] }, action) => {
 
 	}
 };
+
+// [Math.floor(Math.random() * (100 - 1)) + 1]

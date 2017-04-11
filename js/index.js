@@ -1,44 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// Provider passes the Redux store to components
+import { Provider } from 'react-redux';
 
+import store from './store';
 import Game from './components/game';
 
-import * as actions from './actions/index';
-import * as reducers from './reducers/index';
-import store from './store';
+// import * as actions from './actions/index';
+// import * as reducers from './reducers/index';
 
-document.addEventListener('DOMContentLoaded', () => ReactDOM.render(<Game />, document.getElementById('app')));
 
-store.subscribe(() => {
-  console.log("store changed");
-  console.log(store.getState());
-});
+document.addEventListener('DOMContentLoaded', () => ReactDOM.render(
+	<Provider store={store}>
+		<Game />
+	</Provider>, 
+	document.getElementById('app')));
 
-store.dispatch(actions.generateNumber(5));
+// store.subscribe(() => {
+//   console.log("store changed");
+//   console.log(store.getState());
+// });
+
+// store.dispatch(actions.generateNumber(5));
 
 // too low
-store.dispatch(actions.guessNumber(3));
-// store.dispatch(actions.repeatNumber());
-store.dispatch(actions.winningGuess());
-store.dispatch(actions.highGuess());
-store.dispatch(actions.lowGuess());
+// store.dispatch(actions.guessNumber(3));
+// store.dispatch(actions.winningGuess());
+// store.dispatch(actions.highGuess());
+// store.dispatch(actions.lowGuess());
 
 // too high
-store.dispatch(actions.guessNumber(55));
-// store.dispatch(actions.repeatNumber());
-store.dispatch(actions.winningGuess());
-store.dispatch(actions.highGuess());
-store.dispatch(actions.lowGuess());
+// store.dispatch(actions.guessNumber(55));
+// store.dispatch(actions.winningGuess());
+// store.dispatch(actions.highGuess());
+// store.dispatch(actions.lowGuess());
 
 // repeat guess
 // store.dispatch(actions.guessNumber(55));
-// store.dispatch(actions.repeatNumber());
 // store.dispatch(actions.winningGuess());
 // store.dispatch(actions.highGuess());
 // store.dispatch(actions.lowGuess());
 
 // winning guess
-store.dispatch(actions.guessNumber(5));
-store.dispatch(actions.winningGuess());
-store.dispatch(actions.highGuess());
-store.dispatch(actions.lowGuess());
+// store.dispatch(actions.guessNumber(5));
+// store.dispatch(actions.winningGuess());
+// store.dispatch(actions.highGuess());
+// store.dispatch(actions.lowGuess());
