@@ -1,30 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../actions/index';
+import { generateNumber } from '../actions';
+import { postFewestGuesses } from '../actions';
 
-export class Game extends React.Component {
-    constructor(props) {
-        super(props);
-        this.generateNumber = this.generateNumber.bind(this);
-    }
+class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.generateNumber = this.generateNumber.bind(this);
+  }
+  generateNumber() {
+    this.props.dispatch(postFewestGuesses());
+  }
+  //   componentDidMount() {
+  //     this.props.dispatch(generateNumber());
+  //   }
 
-    generateNumber() {
-        this.props.dispatch(actions.generateNumber());
-    }
-
-    render() {
-
-        return (
-            <div className="number-list">
-                {this.props.numbers}
-            </div>
-        );
-    }
+  render() {
+    console.log(this.props);
+    return (
+      <div className="number-list">
+        <h1>Cool</h1>
+        <button onClick={this.generateNumber}>Generate Random Number</button>
+        {this.props.numbers}
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = (state, props) => ({
-    numbers: state.numbers
-});
+const mapStateToProps = (state, props) => {
+  return state;
+};
 
 export default connect(mapStateToProps)(Game);
