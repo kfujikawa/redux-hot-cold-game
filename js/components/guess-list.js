@@ -11,7 +11,7 @@ export class GuessList extends React.Component {
   }
 
     render(){
-        const numbers = props.numbers.map(function(number, index) {
+        const numbers = this.props.numbers.map(function(number, index) {
             return (
                 <li key={index}>
                     {number}

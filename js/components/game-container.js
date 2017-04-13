@@ -13,6 +13,7 @@ export class GameContainer extends React.Component {
 		return (
 	        <div>
 	            <Game />
+	            <GuessList />
 	        </div>
     	);
 	}
