@@ -15,31 +15,31 @@ export class Game extends React.Component {
   // }
 
   guessNumber(){
-    // const userGuess = this.userGuessInput.value;
     this.props.dispatch(guessNumber(this.userGuessInput.value));
+    // if(this.userGuessInput.value === this.props.win){
+    //   this.props.dispatch(actions.winningGuess());
+    // }
   }
 
-    componentDidMount() {
-      this.props.dispatch(generateNumber());
-    }
+  componentDidMount() {
+    this.props.dispatch(generateNumber());
+  }
 
   render() {
     console.log(this.props);
 
-    // const numbers = this.props.numbers.map(number => {
-    //     return <Numbers number={number} key={number} />;
-    // });
-
     return (
+      <div>
         <form>
           <div>
             <h1>Hot Cold Number Game</h1>
             <label>Guess:  </label>
             <input type="text" ref={ref => this.userGuessInput = ref} />
             <button type="button" onClick={this.guessNumber}>Submit Guess</button>
-            <h3>This is the winning number: {this.props.win}</h3>
           </div>
         </form>
+        <h3>This is the winning number: {this.props.win}</h3>
+      </div>
     );
   }
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Game from './game';
 import GuessList from './guess-list';
+import CheckGuess from './check-guess';
 
 export class GameContainer extends React.Component {
 	constructor(props){
@@ -14,6 +15,7 @@ export class GameContainer extends React.Component {
 	        <div>
 	            <Game />
 	            <GuessList />
+	            <CheckGuess />
 	        </div>
     	);
 	}

@@ -25,7 +25,7 @@ export const guessReducer = (state = { numbers: [] }, action) => {
     // 	}
 
     case actions.WINNING_GUESS:
-      if (state.win === state.numbers[state.numbers.length - 1]) {
+      if(state.win === state.numbers[state.numbers.length - 1]){
         console.log('You guessed right!');
         return state;
       } else {
