@@ -31,18 +31,15 @@ export class Game extends React.Component {
     // });
 
     return (
-      <div className="number-list">
-        <h1>Hot Cold Guessing Game</h1>
-        <h3>This is the array of guesses: {this.props.numbers}</h3>
         <form>
           <div>
+            <h1>Hot Cold Number Game</h1>
             <label>Guess:  </label>
             <input type="text" ref={ref => this.userGuessInput = ref} />
             <button type="button" onClick={this.guessNumber}>Submit Guess</button>
             <h3>This is the winning number: {this.props.win}</h3>
           </div>
         </form>
-      </div>
     );
   }
 }

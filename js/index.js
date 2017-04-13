@@ -5,13 +5,15 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 import Game from './components/game';
+import GuessList from './components/guess-list';
+import GameContainer from './components/game-container';
 
 // import * as actions from './actions/index';
 // import * as reducers from './reducers/index';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Game />
+    <GameContainer />
   </Provider>,
   document.getElementById('app')
 );
