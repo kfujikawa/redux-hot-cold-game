@@ -13,14 +13,14 @@ export class GuessList extends React.Component {
     render(){
         const numbers = this.props.numbers.map(function(number, index) {
             return (
-                <li key={index}>
+                <li className= "userGuesses" key={index}>
                     {number}
                 </li>
             );
         });
 
         return (
-            <ul id="guessList">
+            <ul id="guessList">User Guesses:  
                 {numbers}
             </ul>
         );
