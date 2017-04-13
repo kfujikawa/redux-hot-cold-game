@@ -5,20 +5,20 @@ export const WINNING_GUESS = 'WINNING_GUESS';
 export const HIGH_GUESS = 'HIGH_GUESS';
 export const LOW_GUESS = 'LOW_GUESS';
 
-export const generateNumber = number => ({
+export const generateNumber = win => ({
   type: GENERATE_NUMBER,
-  number
+  win
 });
 
-export const guessNumber = guess => ({
+export const guessNumber = numbers => ({
   type: GUESS_NUMBER,
-  guess
+  numbers
 });
 
-export const repeatNumber = number => ({
-  type: REPEAT_NUMBER,
-  number
-});
+// export const repeatNumber = numbers => ({
+//   type: REPEAT_NUMBER,
+//   numbers
+// });
 
 export const winningGuess = () => ({
   type: WINNING_GUESS
