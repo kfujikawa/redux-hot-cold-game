@@ -10,9 +10,9 @@ export const generateNumber = win => ({
   win
 });
 
-export const guessNumber = numbers => ({
+export const guessNumber = number => ({
   type: GUESS_NUMBER,
-  numbers
+  number
 });
 
 // export const repeatNumber = numbers => ({

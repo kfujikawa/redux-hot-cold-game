@@ -4,21 +4,18 @@ import { connect } from 'react-redux';
 import { generateNumber, guessNumber } from '../actions';
 import { postFewestGuesses } from '../actions';
 
+import GuessList from './guess-list';
+import CheckGuess from './check-guess';
+
 export class Game extends React.Component {
   constructor(props) {
     super(props);
     this.guessNumber = this.guessNumber.bind(this);
   }
 
-  // guessNumber() {
-  //   this.props.dispatch(postFewestGuesses());
-  // }
-
-  guessNumber(){
-    this.props.dispatch(guessNumber(this.userGuessInput.value));
-    // if(this.userGuessInput.value === this.props.win){
-    //   this.props.dispatch(actions.winningGuess());
-    // }
+  guessNumber() {
+    this.props.dispatch(guessNumber(parseInt(this.userGuessInput.value)));
+    this.forceUpdate();
   }
 
   componentDidMount() {
@@ -26,19 +23,30 @@ export class Game extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-
     return (
       <div>
         <form>
           <div>
             <h1>Hot Cold Number Game</h1>
-            <label>Guess:  </label>
+            <h2>{this.guessNumber}</h2>
+            <label>Guess: </label>
             <input type="text" ref={ref => this.userGuessInput = ref} />
-            <button type="button" onClick={this.guessNumber}>Submit Guess</button>
+            <button type="button" onClick={this.guessNumber}>
+              Submit Guess
+            </button>
           </div>
         </form>
         <h3>This is the winning number: {this.props.win}</h3>
+
+        <GuessList />
+        <CheckGuess
+          temperature={Math.abs(
+            Math.floor(
+              this.props.win - this.props.numbers[this.props.numbers.length - 1]
+            )
+          )}
+        />
+
       </div>
     );
   }

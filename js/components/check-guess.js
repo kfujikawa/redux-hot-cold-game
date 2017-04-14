@@ -6,24 +6,31 @@ import { winningGuess, guessNumber } from '../actions';
 export class CheckGuess extends React.Component {
   constructor(props) {
     super(props);
+    this.validate = this.validate.bind(this);
   }
 
-  winningGuess(props){
-    if(this.props.numbers[this.props.numbers.length - 1] === this.props.win){
-      console.log("winning guess running");
-      this.props.dispatch(actions.winningGuess())
+  validate() {
+    if (this.props.temperature === 0) {
+      return 'You guessed right...';
+    }
+
+    if (this.props.temperature < 10) {
+      return 'Warm...';
+    }
+
+    if (this.props.temperature > 15) {
+      return 'Cold...';
     }
   }
 
   render() {
     return (
       <div>
-        <p>You win!  Correct guess was:  </p>
+        <h1>{this.validate()}</h1>
         <p>{this.props.numbers[this.props.numbers.length - 1]}</p>
       </div>
-    )
+    );
   }
-
 }
 
 const mapStateToProps = (state, props) => {
